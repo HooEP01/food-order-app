@@ -8,7 +8,7 @@ A new Flutter project.
 <ul>
 <li>Select a directory in Vscode</li>
 <li>Open terminator</li>
-<li>insert 'git clone {http}'</li>
+<li>insert 'git clone https://github.com/HooEP01/food-order-app.git'</li>
 <li>insert 'flutter create .'</li>
 <li>insert 'flutter pub get'</li>
 <li>insert 'flutter run'</li>
