@@ -123,12 +123,6 @@ class _EditProductScreenState extends State<EditProductScreen> {
           ),
         );
       }
-
-      // finally {
-      //   setState(() {
-      //     _isLoading = false;
-      //   });
-      //   Navigator.of(context).pop();
     }
 
     setState(() {
@@ -298,11 +292,6 @@ class _EditProductScreenState extends State<EditProductScreen> {
                                   !value.startsWith('https')) {
                                 return 'Please enter a valid URL';
                               }
-                              // if (!value.endsWith('.png') &&
-                              //     !value.endsWith('.jpg') &&
-                              //     !value.endsWith('.jpeg')) {
-                              //   return 'Please enter a valid image URL';
-                              // }
                               return null;
                             },
                             onSaved: (value) {

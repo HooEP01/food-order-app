@@ -25,31 +25,9 @@ class ProductsOverviewScreen extends StatefulWidget {
 
 class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
   var _showOnlyFavorites = false;
-  var _isInit = true;
-  var _isLoading = true;
 
-  // @override
-  // void initState() {
-  //   Future.delayed(Duration.zero).then((_) {
-  //     Provider.of<Products>(context).fetchAndSetProducts();
-  //   });
-  //   super.initState();
-  // }
-
-  @override
-  void didChangeDependencies() {
-    if (_isInit) {
-      Provider.of<Products>(context).fetchAndSetProducts().then((_) {
-        setState(() {
-          _isLoading = false;
-        });
-      });
-    }
-    setState(() {
-      _isInit = false;
-    });
-
-    super.didChangeDependencies();
+  Future<void> _refreshProducts(BuildContext ctx) async {
+    await Provider.of<Products>(ctx, listen: false).fetchAndSetProducts(false);
   }
 
   @override
@@ -102,9 +80,18 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
         ],
       ),
       drawer: const ShopDrawer(),
-      body: _isLoading
-          ? const Center(child: CircularProgressIndicator())
-          : ProductsGrid(_showOnlyFavorites),
+      body: FutureBuilder(
+        future: _refreshProducts(context),
+        builder: (ctx, snapshot) =>
+            snapshot.connectionState == ConnectionState.waiting
+                ? const Center(
+                    child: CircularProgressIndicator(),
+                  )
+                : RefreshIndicator(
+                    onRefresh: () => _refreshProducts(context),
+                    child: ProductsGrid(_showOnlyFavorites),
+                  ),
+      ),
     );
   }
 }

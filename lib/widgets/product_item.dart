@@ -18,7 +18,6 @@ class ProductItem extends StatelessWidget {
     final product = Provider.of<Product>(context);
     final cart = Provider.of<Cart>(context, listen: false);
     final auth = Provider.of<Auth>(context, listen: false);
-    print(product.isFavorite);
 
     return ClipRRect(
       borderRadius: BorderRadius.circular(10),

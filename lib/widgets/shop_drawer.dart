@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:food_order_app/screens/auth_screen.dart';
 import '../screens/order_screen.dart';
 import '../screens/products_overview_screen.dart';
 import '../screens/admin/user_products_screen.dart';

@@ -31,10 +31,11 @@ class Order with ChangeNotifier {
 
   Future<void> fetchAndSetOrders() async {
     final url = Uri.parse(
-        '${dotenv.env['FIREBASE_URL']}/orders/$userId.json?auth=$authToken');
+      '${dotenv.env['FIREBASE_URL']}/orders/$userId.json?auth=$authToken',
+    );
+
     final response = await http.get(url);
     final List<OrderItem> loadedOrders = [];
-
     if (json.decode(response.body) == null) {
       return;
     }

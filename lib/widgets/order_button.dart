@@ -35,8 +35,9 @@ class _OrderButtonState extends State<OrderButton> {
               });
               widget.cart.clear();
             },
-      child:
-          _isLoading ? CircularProgressIndicator() : const Text('Check Out!'),
+      child: _isLoading
+          ? const CircularProgressIndicator()
+          : const Text('Check Out!'),
     );
   }
 }
