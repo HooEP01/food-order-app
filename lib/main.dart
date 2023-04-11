@@ -56,11 +56,24 @@ class MyApp extends StatelessWidget {
           title: 'SKYE FOOD ORDERING APP',
           theme: ThemeData(
             colorScheme: ColorScheme.fromSwatch(
-              primarySwatch: Colors.purple,
+              primarySwatch: Colors.red,
             ).copyWith(
               secondary: Colors.deepOrange,
             ),
-            fontFamily: 'Lato',
+            fontFamily: 'Mulish',
+            textTheme: ThemeData.light().textTheme.copyWith(
+                  bodyLarge: const TextStyle(
+                    color: Color.fromRGBO(20, 5, 51, 1),
+                  ),
+                  bodyMedium: const TextStyle(
+                    color: Color.fromRGBO(248, 248, 248, 1),
+                  ),
+                  titleLarge: const TextStyle(
+                    fontSize: 20,
+                    fontFamily: 'BigShouldersStencilText',
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
           ),
           home: auth.isAuth
               ? const ProductsOverviewScreen()

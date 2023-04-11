@@ -35,7 +35,7 @@ class ProductItem extends StatelessWidget {
           ),
           title: Text(
             product.title,
-            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.bodyMedium,
           ),
           trailing: IconButton(
             icon: const Icon(
