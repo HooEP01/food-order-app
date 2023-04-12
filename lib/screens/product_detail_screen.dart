@@ -21,6 +21,7 @@ class ProductDetailScreen extends StatelessWidget {
         centerTitle: true,
         title: Text(
           loadProduct.title,
+          style: Theme.of(context).textTheme.titleSmall,
         ),
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,
@@ -42,8 +43,8 @@ class ProductDetailScreen extends StatelessWidget {
             Text(
               'RM ${loadProduct.price}',
               style: const TextStyle(
-                color: Colors.grey,
-                fontSize: 20,
+                color: Colors.red,
+                fontSize: 25,
               ),
             ),
             const SizedBox(

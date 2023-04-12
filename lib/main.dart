@@ -62,14 +62,34 @@ class MyApp extends StatelessWidget {
             ),
             fontFamily: 'Mulish',
             textTheme: ThemeData.light().textTheme.copyWith(
+                  headlineLarge: const TextStyle(
+                    color: Color.fromRGBO(20, 5, 51, 1),
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
                   bodyLarge: const TextStyle(
                     color: Color.fromRGBO(20, 5, 51, 1),
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
                   ),
                   bodyMedium: const TextStyle(
-                    color: Color.fromRGBO(248, 248, 248, 1),
+                    color: Color.fromRGBO(20, 5, 51, 1),
                   ),
                   titleLarge: const TextStyle(
+                    fontSize: 40,
+                    // color: Colors.red,
+                    fontFamily: 'BigShouldersStencilText',
+                    fontWeight: FontWeight.bold,
+                  ),
+                  titleMedium: const TextStyle(
                     fontSize: 20,
+                    color: Colors.white,
+                    fontFamily: 'BigShouldersStencilText',
+                    fontWeight: FontWeight.bold,
+                  ),
+                  titleSmall: const TextStyle(
+                    fontSize: 20,
+                    color: Colors.red,
                     fontFamily: 'BigShouldersStencilText',
                     fontWeight: FontWeight.bold,
                   ),

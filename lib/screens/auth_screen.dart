@@ -24,7 +24,7 @@ class AuthScreen extends StatelessWidget {
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
-                  Color.fromARGB(255, 126, 70, 217).withOpacity(0.5),
+                  Color.fromARGB(255, 222, 38, 38).withOpacity(0.5),
                   const Color.fromRGBO(255, 188, 117, 1).withOpacity(0.9),
                 ],
                 begin: Alignment.topLeft,
@@ -47,8 +47,8 @@ class AuthScreen extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(
                           vertical: 8.0, horizontal: 94.0),
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Colors.indigo,
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.white,
                         boxShadow: const [
                           BoxShadow(
                             blurRadius: 8,
@@ -57,14 +57,10 @@ class AuthScreen extends StatelessWidget {
                           )
                         ],
                       ),
-                      child: const Text(
-                        'MyShop',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 50,
-                          fontFamily: 'Anton',
-                          fontWeight: FontWeight.normal,
-                        ),
+                      child: Text(
+                        'MyPizza',
+                        selectionColor: Colors.blue,
+                        style: Theme.of(context).textTheme.titleLarge,
                       ),
                     ),
                   ),
@@ -244,7 +240,7 @@ class _AuthCardState extends State<AuthCard> {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),
                       ),
-                      backgroundColor: Theme.of(context).primaryColor,
+                      backgroundColor: Theme.of(context).colorScheme.secondary,
                       padding: const EdgeInsets.symmetric(
                           horizontal: 30.0, vertical: 8.0),
                     ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/cart.dart';
+import '../providers/products.dart';
 
 class CartItem extends StatelessWidget {
   final String id;
@@ -14,6 +15,9 @@ class CartItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var product = Provider.of<Products>(context).findById(productId);
+    var imageUrl = product.imageUrl;
+
     return Dismissible(
       key: ValueKey(id),
       background: Container(
@@ -35,9 +39,10 @@ class CartItem extends StatelessWidget {
         return showDialog(
           context: context,
           builder: (ctx) => AlertDialog(
-            title: const Text('Are you sure?'),
-            content:
-                const Text('Do you want to remove the item from the cart?'),
+            title: Text('Are you sure?',
+                style: Theme.of(context).textTheme.titleSmall),
+            content: Text('Do you want to remove the item from the cart?',
+                style: Theme.of(context).textTheme.bodyMedium),
             actions: [
               TextButton(
                 onPressed: () {
@@ -67,14 +72,9 @@ class CartItem extends StatelessWidget {
           padding: const EdgeInsets.all(8),
           child: ListTile(
             leading: CircleAvatar(
-              child: Padding(
-                padding: const EdgeInsets.all(5.0),
-                child: FittedBox(
-                  child: Text('RM$price'),
-                ),
-              ),
+              backgroundImage: NetworkImage(imageUrl),
             ),
-            title: Text(title),
+            title: Text(title, style: Theme.of(context).textTheme.bodyMedium),
             subtitle: Text('Total: RM${(price * quantity)}'),
             trailing: Text('$quantity x'),
           ),
