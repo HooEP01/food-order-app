@@ -40,9 +40,9 @@ class CartItem extends StatelessWidget {
           context: context,
           builder: (ctx) => AlertDialog(
             title: Text('Are you sure?',
-                style: Theme.of(context).textTheme.titleSmall),
+                style: Theme.of(context).textTheme.bodyLarge),
             content: Text('Do you want to remove the item from the cart?',
-                style: Theme.of(context).textTheme.bodyMedium),
+                style: Theme.of(context).textTheme.bodySmall),
             actions: [
               TextButton(
                 onPressed: () {
@@ -64,6 +64,7 @@ class CartItem extends StatelessWidget {
         Provider.of<Cart>(context, listen: false).removeItem(productId);
       },
       child: Card(
+        elevation: 1,
         margin: const EdgeInsets.symmetric(
           horizontal: 15,
           vertical: 4,
@@ -74,8 +75,14 @@ class CartItem extends StatelessWidget {
             leading: CircleAvatar(
               backgroundImage: NetworkImage(imageUrl),
             ),
-            title: Text(title, style: Theme.of(context).textTheme.bodyMedium),
-            subtitle: Text('Total: RM${(price * quantity)}'),
+            title: Text(
+              title,
+              style: Theme.of(context).textTheme.bodyMedium,
+            ),
+            subtitle: Text(
+              'Total: RM${(price * quantity)}',
+              style: Theme.of(context).textTheme.bodySmall,
+            ),
             trailing: Text('$quantity x'),
           ),
         ),

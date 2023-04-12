@@ -21,9 +21,9 @@ class ProductItem extends StatelessWidget {
 
     return Card(
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15),
+        borderRadius: BorderRadius.circular(10),
       ),
-      elevation: 3,
+      elevation: 1,
       child: Stack(
         children: [
           Column(
@@ -49,7 +49,8 @@ class ProductItem extends StatelessWidget {
                 ),
               ),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                 alignment: Alignment.topLeft,
                 child: Text(
                   product.title,
@@ -59,7 +60,7 @@ class ProductItem extends StatelessWidget {
             ],
           ),
           Positioned(
-            bottom: 20,
+            bottom: 10,
             right: 10,
             child: Wrap(
               children: [
@@ -67,7 +68,7 @@ class ProductItem extends StatelessWidget {
                   icon: Icon(product.isFavorite
                       ? Icons.favorite
                       : Icons.favorite_border),
-                  color: Theme.of(context).colorScheme.secondary,
+                  color: Theme.of(context).colorScheme.primary,
                   onPressed: () {
                     product.toggleFavoriteStatus(
                         auth.token as String, auth.userId as String);

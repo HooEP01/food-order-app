@@ -16,6 +16,8 @@ import './providers/order.dart';
 import './providers/cart.dart';
 import './providers/auth.dart';
 
+import './ultilities/buildMaterialColor.dart';
+
 void main() async {
   await dotenv.load(fileName: ".env");
   runApp(const MyApp());
@@ -56,15 +58,32 @@ class MyApp extends StatelessWidget {
           title: 'SKYE FOOD ORDERING APP',
           theme: ThemeData(
             colorScheme: ColorScheme.fromSwatch(
-              primarySwatch: Colors.red,
-            ).copyWith(
-              secondary: Colors.deepOrange,
-            ),
+              primarySwatch: buildMaterialColor(const Color(0xFFF45050)),
+            )
+                .copyWith(
+                  secondary: buildMaterialColor(const Color(0xFFFFDD83)),
+                )
+                .copyWith(
+                  tertiary: buildMaterialColor(const Color(0xFF00235B)),
+                ),
             fontFamily: 'Mulish',
             textTheme: ThemeData.light().textTheme.copyWith(
                   headlineLarge: const TextStyle(
+                    color: Color(0xFFF45050),
+                    fontFamily: 'BigShouldersStencilText',
+                    fontSize: 40,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  headlineMedium: const TextStyle(
+                    color: Color(0xFFF45050),
+                    fontFamily: 'BigShouldersStencilText',
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  headlineSmall: const TextStyle(
                     color: Color.fromRGBO(20, 5, 51, 1),
-                    fontSize: 16,
+                    fontFamily: 'BigShouldersStencilText',
+                    fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
                   bodyLarge: const TextStyle(
@@ -73,24 +92,26 @@ class MyApp extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                   bodyMedium: const TextStyle(
+                    color: Color.fromRGBO(34, 20, 61, 1),
+                    fontSize: 16,
+                  ),
+                  bodySmall: const TextStyle(
+                    fontSize: 14,
                     color: Color.fromRGBO(20, 5, 51, 1),
                   ),
                   titleLarge: const TextStyle(
-                    fontSize: 40,
+                    fontSize: 18,
                     // color: Colors.red,
-                    fontFamily: 'BigShouldersStencilText',
                     fontWeight: FontWeight.bold,
                   ),
                   titleMedium: const TextStyle(
-                    fontSize: 20,
-                    color: Colors.white,
-                    fontFamily: 'BigShouldersStencilText',
+                    fontSize: 16,
+                    color: Color.fromRGBO(20, 5, 51, 1),
                     fontWeight: FontWeight.bold,
                   ),
                   titleSmall: const TextStyle(
-                    fontSize: 20,
-                    color: Colors.red,
-                    fontFamily: 'BigShouldersStencilText',
+                    fontSize: 14,
+                    color: Color.fromRGBO(20, 5, 51, 1),
                     fontWeight: FontWeight.bold,
                   ),
                 ),

@@ -14,13 +14,18 @@ class ShopDrawer extends StatelessWidget {
       child: Column(
         children: [
           AppBar(
-            title: const Text('Hello Friend'),
+            title: Text(
+              'SKPE',
+              style: Theme.of(context).textTheme.headlineMedium,
+            ),
+            elevation: 0,
+            backgroundColor: Colors.white,
             automaticallyImplyLeading: false,
           ),
-          const Divider(),
           ListTile(
-            leading: const Icon(
+            leading: Icon(
               Icons.shop,
+              color: Theme.of(context).colorScheme.primary,
             ),
             title: const Text('Shop'),
             onTap: () {
@@ -28,20 +33,20 @@ class ShopDrawer extends StatelessWidget {
                   .pushReplacementNamed(ProductsOverviewScreen.routeName);
             },
           ),
-          const Divider(),
           ListTile(
-            leading: const Icon(
-              Icons.shop,
+            leading: Icon(
+              Icons.shopping_basket,
+              color: Theme.of(context).colorScheme.primary,
             ),
             title: const Text('Order'),
             onTap: () {
               Navigator.of(context).pushReplacementNamed(OrderScreen.routeName);
             },
           ),
-          const Divider(),
           ListTile(
-            leading: const Icon(
+            leading: Icon(
               Icons.edit,
+              color: Theme.of(context).colorScheme.primary,
             ),
             title: const Text('Manage Products'),
             onTap: () {
@@ -49,10 +54,10 @@ class ShopDrawer extends StatelessWidget {
                   .pushReplacementNamed(UserProductsScreen.routeName);
             },
           ),
-          const Divider(),
           ListTile(
-            leading: const Icon(
+            leading: Icon(
               Icons.exit_to_app,
+              color: Theme.of(context).colorScheme.primary,
             ),
             title: const Text('Logout'),
             onTap: () {

@@ -20,10 +20,32 @@ class UserProductsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Your Products'),
+        leading: Builder(
+          builder: (BuildContext context) {
+            return IconButton(
+              icon: Icon(
+                Icons.map,
+                color: Theme.of(context).colorScheme.primary,
+              ),
+              onPressed: () {
+                Scaffold.of(context).openDrawer();
+              },
+              tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+            );
+          },
+        ),
+        backgroundColor: Colors.white,
+        elevation: 0,
+        title: Text(
+          'Your Products',
+          style: Theme.of(context).textTheme.headlineMedium,
+        ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.add),
+            icon: Icon(
+              Icons.add,
+              color: Theme.of(context).colorScheme.primary,
+            ),
             onPressed: () {
               Navigator.of(context).pushNamed(EditProductScreen.routeName);
             },
@@ -52,7 +74,6 @@ class UserProductsScreen extends StatelessWidget {
                                 productsData.items[i].title,
                                 productsData.items[i].imageUrl,
                               ),
-                              const Divider(),
                             ],
                           ),
                         ),

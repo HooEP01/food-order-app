@@ -23,7 +23,26 @@ class _OrderScreenState extends State<OrderScreen> {
     // final orderData = Provider.of<Order>(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Your Orders'),
+        leading: Builder(
+          builder: (BuildContext context) {
+            return IconButton(
+              icon: Icon(
+                Icons.map,
+                color: Theme.of(context).colorScheme.primary,
+              ),
+              onPressed: () {
+                Scaffold.of(context).openDrawer();
+              },
+              tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+            );
+          },
+        ),
+        title: Text(
+          'My Orders',
+          style: Theme.of(context).textTheme.headlineMedium,
+        ),
+        backgroundColor: Colors.white,
+        elevation: 0,
       ),
       drawer: const ShopDrawer(),
       body: FutureBuilder(

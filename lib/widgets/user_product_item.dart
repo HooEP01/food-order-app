@@ -14,42 +14,51 @@ class UserProductItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final scaffold = ScaffoldMessenger.of(context);
-    return ListTile(
-      title: Text(title),
-      leading: CircleAvatar(
-        backgroundImage: NetworkImage(imageUrl),
-      ),
-      trailing: Container(
-        width: 100,
-        child: Row(
-          children: [
-            IconButton(
-              icon: const Icon(Icons.edit),
-              onPressed: () {
-                Navigator.of(context).pushNamed(
-                  EditProductScreen.routeName,
-                  arguments: id,
-                );
-              },
-              color: Theme.of(context).colorScheme.primary,
+    return Card(
+      elevation: 1,
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: 10),
+        child: ListTile(
+          title: Text(title),
+          leading: CircleAvatar(
+            backgroundImage: NetworkImage(imageUrl),
+          ),
+          trailing: Container(
+            width: 100,
+            child: Row(
+              children: [
+                IconButton(
+                  icon: Icon(
+                    Icons.edit,
+                    color: Theme.of(context).colorScheme.secondary,
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).pushNamed(
+                      EditProductScreen.routeName,
+                      arguments: id,
+                    );
+                  },
+                  color: Theme.of(context).colorScheme.primary,
+                ),
+                IconButton(
+                  icon: const Icon(Icons.delete),
+                  onPressed: () async {
+                    try {
+                      await Provider.of<Products>(context, listen: false)
+                          .deleteProduct(id);
+                    } catch (error) {
+                      scaffold.showSnackBar(
+                        const SnackBar(
+                          content: Text('Cannot delete it'),
+                        ),
+                      );
+                    }
+                  },
+                  color: Theme.of(context).colorScheme.error,
+                ),
+              ],
             ),
-            IconButton(
-              icon: const Icon(Icons.delete),
-              onPressed: () async {
-                try {
-                  await Provider.of<Products>(context, listen: false)
-                      .deleteProduct(id);
-                } catch (error) {
-                  scaffold.showSnackBar(
-                    const SnackBar(
-                      content: Text('Cannot delete it'),
-                    ),
-                  );
-                }
-              },
-              color: Theme.of(context).colorScheme.error,
-            ),
-          ],
+          ),
         ),
       ),
     );

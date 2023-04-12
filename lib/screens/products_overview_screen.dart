@@ -33,8 +33,28 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text('MyPizza', style: Theme.of(context).textTheme.titleMedium),
+        leading: Builder(
+          builder: (BuildContext context) {
+            return IconButton(
+              icon: Icon(
+                Icons.map,
+                color: Theme.of(context).colorScheme.primary,
+              ),
+              onPressed: () {
+                Scaffold.of(context).openDrawer();
+              },
+              tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+            );
+          },
+        ),
+        title: Text(
+          'MyPizza',
+          style: Theme.of(context).textTheme.headlineMedium,
+        ),
+        backgroundColor: Colors.white,
+        elevation: 0,
         actions: <Widget>[
           PopupMenuButton(
             onSelected: (FilterOptions selectedValue) {
@@ -46,8 +66,9 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
                 }
               });
             },
-            icon: const Icon(
+            icon: Icon(
               Icons.more_vert,
+              color: Theme.of(context).colorScheme.primary,
             ),
             itemBuilder: (_) => [
               const PopupMenuItem(
@@ -67,8 +88,9 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
               child: ch as Widget,
             ),
             child: IconButton(
-              icon: const Icon(
+              icon: Icon(
                 Icons.shopping_cart,
+                color: Theme.of(context).colorScheme.primary,
               ),
               onPressed: () {
                 Navigator.of(context).pushNamed(

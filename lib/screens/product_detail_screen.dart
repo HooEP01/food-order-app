@@ -10,6 +10,7 @@ class ProductDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final deviceSize = MediaQuery.of(context).size;
     final productId = ModalRoute.of(context)?.settings.arguments as String;
     final loadProduct = Provider.of<Products>(
       context,
@@ -21,30 +22,24 @@ class ProductDetailScreen extends StatelessWidget {
         centerTitle: true,
         title: Text(
           loadProduct.title,
-          style: Theme.of(context).textTheme.titleSmall,
+          style: Theme.of(context).textTheme.headlineMedium,
         ),
         backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
+        foregroundColor: Theme.of(context).colorScheme.primary,
+        elevation: 0,
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Container(
-              height: 300,
-              width: double.infinity,
+            ClipRRect(
+              borderRadius: const BorderRadius.all(
+                Radius.circular(10),
+              ),
               child: Image.network(
                 loadProduct.imageUrl,
                 fit: BoxFit.cover,
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Text(
-              'RM ${loadProduct.price}',
-              style: const TextStyle(
-                color: Colors.red,
-                fontSize: 25,
+                height: 300,
+                width: deviceSize.width - 30,
               ),
             ),
             const SizedBox(
@@ -52,13 +47,52 @@ class ProductDetailScreen extends StatelessWidget {
             ),
             Container(
               padding: const EdgeInsets.symmetric(
-                horizontal: 10,
+                horizontal: 15,
+                vertical: 10,
+              ),
+              width: double.infinity,
+              child: Text(
+                'Description',
+                textAlign: TextAlign.start,
+                softWrap: true,
+                style: Theme.of(context).textTheme.bodyLarge,
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 15,
               ),
               width: double.infinity,
               child: Text(
                 loadProduct.description,
-                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.bodyMedium,
+                textAlign: TextAlign.start,
                 softWrap: true,
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 15,
+                vertical: 10,
+              ),
+              width: double.infinity,
+              child: Text(
+                'Price',
+                textAlign: TextAlign.start,
+                softWrap: true,
+                style: Theme.of(context).textTheme.bodyLarge,
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 15,
+              ),
+              width: double.infinity,
+              child: Text(
+                'RM ${loadProduct.price}',
+                textAlign: TextAlign.start,
+                softWrap: true,
+                style: Theme.of(context).textTheme.headlineMedium,
               ),
             ),
           ],
