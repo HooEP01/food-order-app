@@ -37,7 +37,7 @@ class UserProductsScreen extends StatelessWidget {
         backgroundColor: Colors.white,
         elevation: 0,
         title: Text(
-          'Your Products',
+          'My Products',
           style: Theme.of(context).textTheme.headlineMedium,
         ),
         actions: [

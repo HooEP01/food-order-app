@@ -54,6 +54,9 @@ class ShopDrawer extends StatelessWidget {
                   .pushReplacementNamed(UserProductsScreen.routeName);
             },
           ),
+          const SizedBox(
+            height: 20,
+          ),
           ListTile(
             leading: Icon(
               Icons.exit_to_app,

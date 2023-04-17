@@ -61,7 +61,8 @@ class MyApp extends StatelessWidget {
               primarySwatch: buildMaterialColor(const Color(0xFFF45050)),
             )
                 .copyWith(
-                  secondary: buildMaterialColor(const Color(0xFFFFDD83)),
+                  secondary: buildMaterialColor(const Color(0xFF000000)),
+                  // secondary: buildMaterialColor(const Color(0xFFFFDD83)),
                 )
                 .copyWith(
                   tertiary: buildMaterialColor(const Color(0xFF00235B)),

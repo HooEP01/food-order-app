@@ -21,15 +21,10 @@ class AuthScreen extends StatelessWidget {
       body: Stack(
         children: <Widget>[
           Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  const Color.fromARGB(255, 222, 38, 38).withOpacity(0.5),
-                  const Color.fromRGBO(255, 188, 117, 1).withOpacity(0.9),
-                ],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                stops: const [0, 1],
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage("assets/images/wallpaper.jpg"),
+                fit: BoxFit.cover,
               ),
             ),
           ),
@@ -59,7 +54,8 @@ class AuthScreen extends StatelessWidget {
                         ],
                       ),
                       child: Text(
-                        'MyPizza',
+                        'SKYE',
+                        textAlign: TextAlign.center,
                         selectionColor: Colors.blue,
                         style: Theme.of(context).textTheme.headlineLarge,
                       ),
@@ -239,11 +235,11 @@ class _AuthCardState extends State<AuthCard> {
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30),
+                        borderRadius: BorderRadius.circular(10),
                       ),
-                      backgroundColor: Theme.of(context).colorScheme.secondary,
+                      backgroundColor: Colors.black,
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 30.0, vertical: 8.0),
+                          horizontal: 35.0, vertical: 15.0),
                     ),
                     onPressed: _submit,
                     child:

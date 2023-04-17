@@ -21,6 +21,8 @@ class CartScreen extends StatelessWidget {
         ),
         elevation: 0,
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: OrderButton(cart),
       body: Column(
         children: [
           Card(
@@ -47,7 +49,6 @@ class CartScreen extends StatelessWidget {
                     ),
                     backgroundColor: Theme.of(context).colorScheme.primary,
                   ),
-                  OrderButton(cart),
                 ],
               ),
             ),

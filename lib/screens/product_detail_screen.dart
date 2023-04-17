@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/products.dart';
+import '../providers/cart.dart';
 
 class ProductDetailScreen extends StatelessWidget {
   static const routeName = '/product-detail';
@@ -11,6 +12,7 @@ class ProductDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final deviceSize = MediaQuery.of(context).size;
+    final cart = Provider.of<Cart>(context, listen: false);
     final productId = ModalRoute.of(context)?.settings.arguments as String;
     final loadProduct = Provider.of<Products>(
       context,
@@ -27,6 +29,37 @@ class ProductDetailScreen extends StatelessWidget {
         backgroundColor: Colors.white,
         foregroundColor: Theme.of(context).colorScheme.primary,
         elevation: 0,
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: SizedBox(
+        height: 50.0,
+        width: deviceSize.width,
+        child: FittedBox(
+          child: FloatingActionButton.extended(
+            backgroundColor: Colors.black,
+            label: const Text('Add to Cart'),
+            onPressed: () {
+              cart.addItem(
+                  loadProduct.id, loadProduct.price, loadProduct.title);
+              ScaffoldMessenger.of(context).hideCurrentSnackBar();
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: const Text('Added item to cart!'),
+                  duration: const Duration(seconds: 2),
+                  action: SnackBarAction(
+                    label: 'UNDO',
+                    onPressed: () {
+                      cart.removeSingleItem(loadProduct.id);
+                    },
+                  ),
+                ),
+              );
+            },
+            extendedPadding: EdgeInsets.symmetric(
+              horizontal: (deviceSize.width / 2) - 60,
+            ),
+          ),
+        ),
       ),
       body: SingleChildScrollView(
         child: Column(

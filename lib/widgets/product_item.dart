@@ -61,10 +61,26 @@ class ProductItem extends StatelessWidget {
           ),
           Positioned(
             bottom: 10,
+            left: 10,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                vertical: 15.0,
+              ),
+              child: Text(
+                'RM ${product.price.toString()}',
+                style: Theme.of(context).textTheme.bodyMedium,
+              ),
+            ),
+          ),
+          Positioned(
+            bottom: 10,
             right: 10,
             child: Wrap(
+              alignment: WrapAlignment.end,
+              spacing: -18,
               children: [
                 IconButton(
+                  padding: const EdgeInsets.all(0),
                   icon: Icon(product.isFavorite
                       ? Icons.favorite
                       : Icons.favorite_border),
@@ -75,10 +91,11 @@ class ProductItem extends StatelessWidget {
                   },
                 ),
                 IconButton(
+                  padding: const EdgeInsets.all(0),
                   icon: const Icon(
                     Icons.shopping_cart,
                   ),
-                  color: Theme.of(context).colorScheme.secondary,
+                  color: Theme.of(context).colorScheme.primary,
                   onPressed: () {
                     cart.addItem(product.id, product.price, product.title);
                     ScaffoldMessenger.of(context).hideCurrentSnackBar();

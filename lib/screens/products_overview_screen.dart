@@ -50,7 +50,7 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
           },
         ),
         title: Text(
-          'MyPizza',
+          'My Pizza',
           style: Theme.of(context).textTheme.headlineMedium,
         ),
         backgroundColor: Colors.white,
