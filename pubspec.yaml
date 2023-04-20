@@ -1,5 +1,5 @@
 name: food_order_app
-description: A new Flutter project.
+description: SKYE Food Order App.
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -35,6 +35,7 @@ dependencies:
   http: ^0.13.5
   shared_preferences: ^2.1.0
   flutter_dotenv: ^5.0.2
+  flutter_launcher_icons: ^0.13.0
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -53,6 +54,11 @@ dev_dependencies:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
+
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/icons/app-icon.png"
 
 # The following section is specific to Flutter packages.
 flutter:
@@ -83,11 +89,6 @@ flutter:
       fonts:
         - asset: assets/fonts/BigShouldersStencilText-Regular.ttf
         - asset: assets/fonts/BigShouldersStencilText-Bold.ttf
-          weight: 700
-    - family: BigShouldersText
-      fonts:
-        - asset: assets/fonts/BigShouldersText-Regular.ttf
-        - asset: assets/fonts/BigShouldersText-Bold.ttf
           weight: 700
     - family: Mulish
       fonts:
