@@ -13,7 +13,6 @@ class Auth with ChangeNotifier {
   DateTime? _expiryDate;
   String? _userId;
   Timer? _authTimer;
-  String? _role;
 
   bool get isAuth {
     return token != null;
@@ -30,10 +29,6 @@ class Auth with ChangeNotifier {
       return _token;
     }
     return null;
-  }
-
-  String? get role {
-    return _role;
   }
 
   Future<void> _authenticate(
@@ -64,7 +59,6 @@ class Auth with ChangeNotifier {
           ),
         ),
       );
-      _role = await userRole();
 
       _autoLogout();
       notifyListeners();
@@ -74,7 +68,6 @@ class Auth with ChangeNotifier {
         'token': _token,
         'userId': _userId,
         'expiryDate': _expiryDate?.toIso8601String(),
-        'role': _role,
       });
       prefs.setString('userData', userData);
     } catch (error) {
@@ -134,30 +127,5 @@ class Auth with ChangeNotifier {
     }
     final timeToExpiry = _expiryDate?.difference(DateTime.now()).inSeconds;
     _authTimer = Timer(Duration(seconds: timeToExpiry as int), logout);
-  }
-
-  Future<String> userRole() async {
-    final url = Uri.parse(
-        "${dotenv.env['FIREBASE_URL']}/userRoles/$userId.json?auth=$token'");
-    await http.post(
-      url,
-      body: json.encode(
-        {
-          'role': 'user',
-        },
-      ),
-    );
-    return 'user';
-  }
-
-  Future<String> getUserRole() async {
-    final url = Uri.parse(
-      "${dotenv.env['FIREBASE_URL']}/userRoles/$userId.json?auth=$token'",
-    );
-
-    final response = await http.get(url);
-    final data = json.decode(response.body);
-    print(data);
-    return 'user';
   }
 }

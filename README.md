@@ -13,3 +13,9 @@ A new Flutter project.
 <li>insert 'flutter pub get'</li>
 <li>insert 'flutter run'</li>
 </ul>
+
+<h2>Connect to Firebase</h2>
+<ul>
+<li>Create .env file in root directory</li>
+<li>Add 'FIREBASE_URL' and 'FIREBASE_API_KEY'</li>
+</ul>

@@ -29,6 +29,7 @@ class Order with ChangeNotifier {
     return [..._orders];
   }
 
+  // get order
   Future<void> fetchAndSetOrders() async {
     final url = Uri.parse(
       '${dotenv.env['FIREBASE_URL']}/orders/$userId.json?auth=$authToken',
@@ -63,6 +64,7 @@ class Order with ChangeNotifier {
     _orders = loadedOrders.reversed.toList();
   }
 
+  // post order
   Future<void> addOrder(List<CartItem> cartProducts, double total) async {
     final url = Uri.parse(
         '${dotenv.env['FIREBASE_URL']}/orders/$userId.json?auth=$authToken');

@@ -26,6 +26,7 @@ class Products with ChangeNotifier {
     return _items.where((product) => product.isFavorite == true).toList();
   }
 
+  // get product
   Future<void> fetchAndSetProducts([bool filterByUser = false]) async {
     final filter = filterByUser ? 'orderBy="creatorId"&equalTo="$userId"' : '';
 
@@ -69,6 +70,7 @@ class Products with ChangeNotifier {
     }
   }
 
+  // post product
   Future<void> addProduct(Product product) async {
     final url = Uri.parse(
       '${dotenv.env['FIREBASE_URL']}/products.json?auth=$authToken',
@@ -100,6 +102,7 @@ class Products with ChangeNotifier {
     }
   }
 
+  // patch product
   Future<void> updateProduct(String id, Product newProduct) async {
     final prodIndex = _items.indexWhere((prod) => prod.id == id);
     if (prodIndex >= 0) {
@@ -119,6 +122,7 @@ class Products with ChangeNotifier {
     notifyListeners();
   }
 
+  // delete product
   Future<void> deleteProduct(String id) async {
     // optimizing update
     final url = Uri.parse(
